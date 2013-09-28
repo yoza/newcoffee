@@ -1,0 +1,26 @@
+{% load filters %}
+
+{% for field in form %}
+    {% if field.is_hidden %}
+        <li>
+        {{ field }}
+        </li>
+    {% else %}
+        <li>
+            <div class="field fieldtype-{{ field.field.widget|classname }} fieldname-{{ field.html_name }} {% if field.field.required %}required{% endif %}">
+                {{ field.extralabel }}
+                {% if field.field.label %}
+                    {{ field.label_tag }}
+                {% endif %}
+                <div class="field-wrapper">
+                    {{ field|safe }}
+                </div>
+                {{ field.errors }}
+                <div class="clear"> </div>
+                {% ifequal field.field.widget|classname 'Textarea' %}
+                    <span class="char-left"></span>
+                {% endifequal %}
+            </div>
+        </li>
+    {% endif %}
+{% endfor %}

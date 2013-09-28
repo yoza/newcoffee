@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load strip i18n %}
+
+{% block content %}
+<div class="error-content">
+<h2>{% blocktrans %}Apologies. The page you requested could not be found{% endblocktrans %}.</h2>
+<p>{% blocktrans %}We apologize for any inconvenience.{% endblocktrans %}</p>
+<p>{% blocktrans %}To return to the home page please click{% endblocktrans %} <a href="/">{% trans "here" %}</a>.</p>
+</div>
+{% endblock %}

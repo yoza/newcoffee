@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load cache common i18n %}
+
+{% load url from future %}
+
+{% block extrahead %}
+    {{ block.super }}
+{% endblock %}
+
+{% block topnav %}<a class="home-genicon" title="Home" href="{% url 'pages-root' %}"></a>{% endblock%}
+
+{% block pagehead %}
+    <h3>{% trans 'Coffee Trips'%}</h3>
+{% endblock %}
+
+{% block sidebar %}
+    <div id="profile-trip">
+        {% trip_list %}
+        <div class="create-new">
+            <sub>&nbsp;</sub><a href="{% url 'trip-view' %}">
+                {% trans 'Add new trip' %}</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="wrap-form">
+        {% trip_form %}
+    </div>
+{% endblock %}
+
+{% block windowready %}
+    {{ block.super }}
+    var calb = function(formset) {
+        $(formset).each(function(){
+
+        });
+    };
+    $('#add-row').click(function(e) {
+        e.preventDefault();
+        $(e.target).blur();
+        cloneRow('FORMSET.inline-departure:last',
+                 'departure_set', calb);
+    });
+    $('INPUT[type=checkbox]').change(function(e) {
+        $(e.target).blur();
+    });
+
+    var slug ="{{slug}}";
+    var del_button = 'A.delete-trip';
+    var trips = '#profile-trip';
+    var delform = '#deltripform'
+    var cfmsg = "{% trans 'Are you sure you want to delete this trips?' %}";
+    items_delete(trips, del_button, delform, slug, cfmsg);
+{% endblock %}

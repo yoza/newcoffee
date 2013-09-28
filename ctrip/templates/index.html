@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load common cache i18n %}
+
+
+{% block extrastyle %}
+    {{ block.super }}
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        {% trans 'To edit trips list please click' %}&nbsp;<a class="trip-loader" href="{% url 'trip-view' %}">{% trans 'here' %}</a>
+        <span class="genicon"></span>
+    </div>
+{% endblock %}

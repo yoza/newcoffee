@@ -1,0 +1,28 @@
+{% load filters %}
+
+{% for f in formset.management_form %}
+    {{ f }}
+{% endfor %}
+{% for f in formset.forms %}
+    <formset class='inline-departure'>
+    {% for field in f %}
+        <li class='inline-row inline-{{ field.field.widget|classname }}'>
+            <div class="fieldtype-{{ field.field.widget|classname }} {% if field.field.required %}required{% endif %}">
+            {% if not field.is_hidden %}
+                {{ field.label_tag }}
+                <div class="field-wrapper">
+                    {{ field.errors }}
+                    {{ field }}
+                </div>
+                <div class="clear"> </div>
+                {% ifequal field.field.widget|classname 'Textarea' %}
+                    <span class="char-left"></span>
+                {% endifequal %}
+            {% else %}
+                <div valign="bottom">{{ field }}</div>
+            {% endif %}
+            </div>
+        </li>
+    {% endfor %}
+    </formset>
+{% endfor %}

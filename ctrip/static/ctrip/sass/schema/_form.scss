@@ -1,0 +1,98 @@
+.wrap-form {
+    padding: 10px;
+    .error {
+        line-height: 20px;
+        color: red;
+    }
+    .form {
+        width: auto;
+        text-align: right;
+        UL.form-items {
+            width: auto;
+            margin: 0 auto;
+            position: relative;
+            LI {
+                display: list-item;
+                .field {
+                    width: auto;
+                    margin-bottom: 15px;
+                    LABEL {
+                        padding-left: 5px;
+                        display: block;
+                        position: absolute;
+                        line-height: 1.4;
+                        font-family: $default-font-family;
+                        font-style: italic;
+                        font-size: $base-font-size;
+                        transition: all 0.16s ease-in-out 0s;
+                        color: $label-color;
+                        font-weight: normal;
+                    }
+                    .field-wrapper {
+                        border: 1px solid $border-color;
+                        overflow: hidden;
+                        INPUT {
+                            font-family: $default-font-family;
+                            font-size: $base-font-size;
+                            color: $base-color;
+                            width: 100%;
+                            border: none;
+                            display: block;
+                            position: relative;
+                            right: 0;
+                            transition: all 0.08s ease-in-out 0s;
+                            z-index: 3;
+                        }
+                    }
+                    UL.errorlist {
+                        LI {
+                            font-size: $small-font-size;
+                            color: $red-color;
+                        }
+                    }
+                    .return-home {
+                        IMG {
+                            vertical-align: top;
+                        }
+                    }
+                }
+                .fieldtype-TextInput {
+                    INPUT {
+                        min-width: 220px;
+                        min-height: 19px;
+                        padding-left: 5px;
+                    }
+                }
+                INPUT[type='text']::-moz-placeholder {
+                    line-height: 1.2;
+                    font-family: $default-font-family;
+                    font-style: italic;
+                    font-size: $base-font-size;
+                    opacity: 0.6;
+                }
+                INPUT[type='text']:focus::-moz-placeholder {
+                    opacity: 0.3;
+                    transition: all 0.21s ease-in-out 0s;
+                }
+                BUTTON {
+                    padding: 2px 15px;
+                    background-color: $blue-color;
+                    color: $white-color;
+                    border-radius: 8px;
+                    font-family: $default-font-family;
+                    font-size: $middle-font-size;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+            .asterix {
+                color: $red-color;
+            }
+            SUB SPAN,
+            SUB {
+                font-size: $small-font-size;
+            }
+        }
+    }
+
+}

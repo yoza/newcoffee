@@ -1,0 +1,208 @@
+.top-nav {
+    padding-top: 10px;
+    .home-genicon {
+        font-family: $icon-font-family;
+        font-size: $large-font-size;
+        color: $base-color;
+        text-decoration: none;
+    }
+    .home-genicon:hover {
+        color: $anchor-color;
+    }
+}
+
+.wrap-content {
+    padding-top: 40px;
+    line-height: 1.3;
+    @import "schema/form";
+    A {
+        text-decoration: none;
+        border-bottom: none;
+        color: $base-color;
+    }
+    A:hover {
+        border-bottom: dotted 1px $base-color;
+    }
+    H3 {
+        font-size: $h3-font-size;
+        display: inline-block;
+        margin-bottom: 30px;
+    }
+    .main-content {
+        display: flex;
+        flex-flow: row;
+        flex-direction: row;
+        overflow: hidden;
+        width: 100%;
+        padding: 10px;
+        @include box-sizing(border-box);
+        border-radius: 10px;
+        background-color: #FBFAF4;
+        .genicon {
+            font-family: $icon-font-family;
+            font-size: $large-font-size;
+            color: $anchor-color;
+        }
+        .trip-loader {
+            color: $anchor-color;
+            text-decoration: underline;
+            border-bottom: none;
+        }
+        .trip-loader:hover {
+            text-decoration: none;
+        }
+        #block-content {
+            padding-bottom: 0;
+            flex: 1 1 auto;
+            order: 1;
+            width: 50%;
+            UL.form-items {
+                text-align: right;
+                LI {
+                    display: list-item;
+                    .field {
+                        margin-bottom: 15px;
+                    }
+                    LABEL {
+                        line-height: 1.6;
+                        font-size: $middle-font-size;
+                    }
+                    .field-wrapper {
+                        min-width: 220px;
+                        background-color: transparent;
+                        .errorlist {
+                            position: absolute;
+                            margin-top: 25px;
+                            width: 100%;
+                            text-align: left;
+                            font-size: $small-font-size;
+                            color: $red-color;
+                        }
+                    }
+                    #add-row {
+                        text-align: left;
+                        SUB {
+                            font-family: $icon-font-family;
+                            font-size: $large-font-size;
+                        }
+                        A {
+                            font-size: $middle-font-size;
+                            vertical-align: top;
+                            line-height: 1.6;
+                            color: $anchor-color;
+                            border-bottom: dotted 1px $anchor-color;
+                        }
+                        A:hover {
+                            border: none;
+                        }
+                    }
+                    .fieldtype-SelectDateWidget {
+                        LABEL {
+                            position: absolute;
+                            left: 0;
+                            white-space: nowrap;
+                        }
+                        .field-wrapper {
+                            text-align: left;
+                            overflow: visible;
+                            margin-left: 80px;
+                            SELECT {
+                                width: auto;
+                                border: solid 1px $border-color!important;
+                                background-color: $white-color;
+                                OPTION {
+                                    @include box-sizing(border-box);
+                                    background-color: $white-color;
+                                    border-right: solid 1px $border-color;
+                                }
+                            }
+                        }
+                    }
+                    .fieldtype-CheckboxInput {
+                        margin: 8px 0 8px;
+                        position: relative;
+                        width: auto;
+                        text-align: left;
+                         LABEL {
+                            line-height: 1.3;
+                            position: relative;
+                            width: auto;
+                            margin-right: 10px;
+                            transition: none;
+                            float: left;
+                            text-align: left;
+                        }
+                        .field-wrapper {
+                            position: relative;
+                            width: auto;
+                            background-color: transparent;
+                            INPUT {
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #left-sidebar {
+            flex: 1 1 auto;
+            order: 0;
+            min-width: 220px;
+            padding-right: 15px;
+            #profile-trip {
+                background-color: $white-color;
+                padding: 10px;
+                border-radius: 8px;
+                border: solid 1px $border-color;
+                UL {
+                    LI {
+                        padding: 2px;
+                        INPUT[type="checkbox"] {
+                            float: right;
+                        }
+                    }
+                    LI.row1 {
+                        DIV {
+                            background-color: $list-color;
+                        }
+                    }
+                }
+                .create-new,
+                .delbutton-wrap {
+                    SUB {
+                        font-family: $icon-font-family;
+                        font-size: $large-font-size;
+                    }
+                    A {
+                        font-size: $middle-font-size;
+                        vertical-align: top;
+                        line-height: 1.6;
+                        color: $anchor-color;
+                        border-bottom: 1px dotted $anchor-color;
+                    }
+                    A:hover {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+    @media all and (max-width: 648px) {
+
+        .main-content {
+            flex-flow: column;
+            flex-direction: column;
+            min-width: 300px;
+        }
+        .main-content > #block-content {
+            height: auto;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .main-content > #left-sidebar {
+            padding-right: 0;
+        }
+    }
+}

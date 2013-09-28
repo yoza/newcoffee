@@ -1,0 +1,26 @@
+// ---------------------------------------------------------------------------
+// Imports
+@import "compass/reset";
+@import "base";
+@import "compass/layout.scss";
+@import "compass/css3/box-sizing";
+/* -------------------------------------------------------------------------*/
+/* Layout */
+
+HTML {
+    height: 100%;
+}
+
+@include sticky-footer(40px, "#layout", ".footer-compensator", "#footer");
+.bodycenter {
+    background-color: $body-color;
+    color: $base-color;
+    font-family: $default-font-family;
+    font-size: $base-font-size;
+    #layout {
+        @include container;
+        @include susy-grid-background;
+        @import "schema/content";
+    }
+    @import "schema/footer";
+}

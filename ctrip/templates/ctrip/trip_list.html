@@ -1,0 +1,23 @@
+{% load cache forms i18n %}
+{% load url from future %}
+
+
+{% if trips %}
+    <form method="post" class="form"
+          enctype="multipart/form-data" id="deltripform">{% csrf_token %}
+        <ul>
+        {% for trip in trips %}
+            <li class={% cycle 'row0' 'row1' %}>
+                <div id="trip-{{trip.id}}">
+                    <a href="{% url 'trip-view' trip.slug %}">{{ trip.name }}</a>
+                    <input id="id_trip-{{ trip.id }}-DELETE" type="checkbox" name="trip-{{ trip.id }}-DELETE">
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </form>
+    <span class="delbutton-wrap"><sub>&nbsp;</sub><a href="{% url 'delete-trip' %}"
+                                           class="delete-trip">
+                                           {% trans "Delete checked trips" %}</a>
+    </span>
+{% endif %}

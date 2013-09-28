@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load cache i18n site_header %}
+{% get_current_language as LANGUAGE_CODE %}
+{% spaceless %}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{LANGUAGE_CODE}}"
+      lang="{{LANGUAGE_CODE}}">
+    <head>
+        {% block sitehead %}{% metadata_tag %}{% endblock %}
+        {% block extrastyle %}{% endblock %}
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body class="bodycenter">
+    {% block decorator_class %}
+        <div class="top-body-decorator"></div>
+    {% endblock %}
+        {% block body %}
+            <div id='layout'>
+                {% block absolute %}{% endblock %}
+                {% block layout %}
+                    <header class="header">
+                        {% block header %}
+                            <div class="logo-picture">
+                                {% block logo %}{% endblock %}
+                            </div>
+                            <div class="top-banner-place"></div>
+                            <div class="top-controls">
+                                {% block topcontrols %}
+                                    <nav class="top-nav">
+                                        {% block topnav %}{% endblock %}
+                                    </nav>
+                                {% endblock %}
+                            </div>
+                            <div class="main-menu">
+                                {% block mainmenu %}{% endblock %}
+                            </div>
+                        {% endblock %}
+                    </header>
+                    <main>
+                        {% block underheader %}{% endblock%}
+                        {% block wrapcontent %}
+                        <div class="wrap-content">
+                            {% block pagehead %}{% endblock %}
+                            <div class="main-content">
+                                <section id="left-sidebar">
+                                    {% block sidebar %}{% endblock %}
+                                </section>
+                                <section id="block-content">
+                                    {% block content %}
+                                        <span>{% trans "Loading..." %}</span>
+                                    {% endblock %}
+                                </section>
+                            </div>
+                        </div>
+                        <div class='footer-compensator'>&nbsp;</div>
+                        {% endblock %}
+                    </main>
+                {% endblock %}
+            </div>
+            <footer id="footer">
+                {% block site-footer %}
+                <div class="footer-inner">
+                    <nav class="footer_links">
+                        {% block footernav %}{% endblock %}
+                    </nav>
+                    <div class="copyright">
+                        {% block copyright%}© 2013 Oleg Prans{% endblock %}
+                    </div>
+                </div>
+                {% endblock %}
+            </footer>
+        {% endblock %}
+        <script type="text/javascript">
+            {% block extra_scripts %}
+                (function($){
+                    $(window).ready(function($){
+                        {% block windowready %}
+                        {% endblock %}
+                    });
+                    $(window).load(function() {
+                        {% block windowload %}
+                        {% endblock %}
+                    });
+                })(jQuery);
+            {% endblock %}
+        </script>
+        {% block for_google_analitics %}
+            {% if not debug %}{% endif %}
+        {% endblock %}
+    </body>
+</html>
+{% endspaceless %}

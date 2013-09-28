@@ -1,17 +1,23 @@
+"""
+coffetrip urls
+"""
+
 from django.conf.urls import patterns, include, url
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+from ctrip.views import index_view
+from ctrip.views.trip_views import trip_view, delete_trip_view
+
+
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'newcoffee.views.home', name='home'),
-    # url(r'^newcoffee/', include('newcoffee.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^trip/(?:(?P<slug>[-\w.]+)/)?(/)?$', trip_view, name='trip-view'),
+
+    url(r'^delete-trip/$', delete_trip_view, name='delete-trip'),
+
+    url(r'^(?:(?P<slug>home)/)?$', index_view, name='pages-root'),
 )

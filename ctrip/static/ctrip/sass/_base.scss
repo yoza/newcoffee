@@ -1,0 +1,45 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "susy";
+@import "compass/css3/font-face";
+
+// ---------------------------------------------------------------------------
+// Basic Grid
+
+$total-columns  : 12;
+$column-width   : 67px;
+$gutter-width   : 15px;
+$grid-padding   : $gutter-width;
+
+$show-grid-backgrounds  : false;
+
+
+$default-font-family    : unquote("Tahoma, Verdana, Arial");
+$small-font-size        : 12px;
+$middle-font-size       : 15px;
+$base-font-size         : 18px;
+$large-font-size        : 22px;
+
+$h3-font-size           : 24px;
+
+$base-color             : #444444;
+$anchor-color           : #034DAD;
+$border-color           : #DFDAD4;
+$grey-color             : #A0A0A0;
+$red-color              : red;
+$white-color            : #FFFFFF;
+$label-color            : #DFDAD4;
+$body-color             : #E6E4DE;
+$list-color             : #F1F1F1;
+$blue-color             : #0877C0;
+
+@include font-face('Genericons',
+    font-files("/static/ctrip/fonts/genericons-regular-webfont.woff",
+                "/static/ctrip/fonts/genericons-regular-webfont.ttf",
+                "/static/ctrip/fonts/genericons-regular-webfont.svg"
+    ),
+    "/static/ctrip/fonts/genericons-regular-webfont.eot"
+);
+
+$icon-font-family: 'Genericons';

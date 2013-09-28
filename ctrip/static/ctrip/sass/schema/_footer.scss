@@ -1,0 +1,18 @@
+/**
+ * Footer block
+ */
+
+#footer {
+    .footer-inner {
+        @include container;
+        height: 100%;
+        .copyright {
+            top: 20px;
+            text-align: center;
+            position: relative;
+            color: $base-color;
+            font-size: $small-font-size;
+            line-height: normal;
+        }
+    }
+}

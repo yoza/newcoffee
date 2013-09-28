@@ -1,0 +1,40 @@
+{% load cache forms i18n %}
+
+{% load url from future %}
+
+
+{% if form.errors %}
+    <span class="error">
+        {% trans "Please correct the following errors:" %}
+    </span>
+{% endif %}
+<form method="post" class="form"
+      enctype="multipart/form-data" id="tripform">{% csrf_token %}
+    <ul class="form-items clearfix">
+        {% form "TripForm" %}
+        <li>
+            <input type="hidden" name="formname" value="TripForm" />
+
+        </li>
+        {% include "formset.html" %}
+        <li>
+            <div id="add-row">
+                <sub>&nbsp;</sub><a href="javascript:void(0)">
+                    {% trans 'Add another departure' %}</a>
+            </div>
+            <div class="field fieldtype-submit">
+                <div class="submit-field-wrapper">
+                    <button type="submit">{% trans 'Save' %}</button>
+                </div>
+                <div class="clear"> </div>
+            </div>
+        </li>
+        <li>
+            <div class="field">
+                <sub class="remarks-wrapper">
+                    <span class="remarks">{%trans "Fields marked with an asterix (" %}</span><span class="asterix">&#042;</span><span class="remarks">{%trans ") are required." %}</span>
+                </sub>
+            </div>
+        </li>
+    </ul>
+</form>
