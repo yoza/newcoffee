@@ -1,0 +1,10 @@
+.cache
+*.py[co]
+*.ch
+*.jar
+pub/
+venv/
+pub/media
+pub/static/admin
+settings_local.py
+.sass-cache/
