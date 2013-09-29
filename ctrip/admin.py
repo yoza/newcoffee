@@ -3,8 +3,7 @@ trip admin
 
 """
 from django.contrib import admin
-from ctrip.models import Departure, Trip
-
+from models import Departure, Trip
 
 
 class DepartureInline(admin.StackedInline):

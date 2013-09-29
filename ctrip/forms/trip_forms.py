@@ -6,30 +6,29 @@ from __future__ import absolute_import
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from django.conf import settings
+
 from django.forms import Form
 from datetime import date
 from django.forms.extras.widgets import SelectDateWidget
-
-from django.db.models import Count
 
 from django.utils.text import slugify
 
 from ctrip.models import Trip, Departure
 
 
+def validate_date(value):
+    """
+    validate date
+    """
+    if value < date.today():
+        err_text = _(u'Date must not be less than today.')
+        raise forms.ValidationError(err_text)
+
+
 class DepartureInlineForm(forms.ModelForm):
     """
     inline form for input departure
     """
-    def validate_date(value):
-        """
-        validate date
-        """
-        if value < date.today():
-            err_text = _(u'Date must not be less than today.')
-            raise forms.ValidationError(err_text)
-
     datewidget = \
         SelectDateWidget(years=range(date.today().year, date.today().year+2))
     start_date = \
@@ -58,7 +57,8 @@ class TripForm(Form):
     class Meta:
         model = Trip
 
-    def __init__(self, request=None, data=None, instance=None, *args, **kwargs):
+    def __init__(self, request=None, data=None, instance=None,
+                 *args, **kwargs):
         """
         initial trip form
         """

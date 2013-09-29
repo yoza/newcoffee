@@ -1,16 +1,30 @@
 """
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
+simple test
 """
 
 from django.test import TestCase
+from django.utils import timezone
+import forms
+from .models import Trip
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
+class DepatrureFormTest(TestCase):
+    """
+    test depatrure form
+    """
+    def setUp(self):
         """
-        Tests that 1 + 1 always equals 2.
+        create trip
         """
-        self.assertEqual(1 + 1, 2)
+        self.trip = Trip.objects.create(name='Trip test',
+                                        slug='trip-test')
+
+    def test_departure_form(self):
+        """
+        Test ``DepartureInlineForm``
+        """
+
+        form = forms.DepartureInlineForm(data={'trip': self.trip.id,
+                                               'start_date': timezone.now()})
+
+        self.assertEqual(form.is_valid(), True)

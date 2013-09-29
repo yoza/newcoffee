@@ -9,6 +9,15 @@ from django.conf import settings
 from django.utils import timezone
 
 
+class TripManager(models.Manager):
+    """
+    manager for model Trip
+
+    """
+    def __init__(self, *args, **kwargs):
+        super(TripManager, self).__init__(*args, **kwargs)
+
+
 class Trip(models.Model):
     """
     trip model
@@ -17,6 +26,7 @@ class Trip(models.Model):
                             help_text=_('Trip name'))
     slug = models.SlugField(_('slug'), null=False, blank=False, max_length=128,
                             unique=True, help_text=_('Trip slug'))
+    objects = TripManager()
 
     class Meta:
         verbose_name = _('trip')
