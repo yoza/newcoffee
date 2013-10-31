@@ -4,9 +4,9 @@
     {{ f }}
 {% endfor %}
 {% for f in formset.forms %}
-    <formset class='inline-departure'>
+    <div class='inline-departure'>
     {% for field in f %}
-        <li class='inline-row inline-{{ field.field.widget|classname }}'>
+        <div class='inline-row inline-{{ field.field.widget|classname }}'>
             <div class="fieldtype-{{ field.field.widget|classname }} {% if field.field.required %}required{% endif %}">
             {% if not field.is_hidden %}
                 {{ field.label_tag }}
@@ -19,10 +19,10 @@
                     <span class="char-left"></span>
                 {% endifequal %}
             {% else %}
-                <div valign="bottom">{{ field }}</div>
+                {{ field }}
             {% endif %}
             </div>
-        </li>
+        </div>
     {% endfor %}
-    </formset>
+    </div>
 {% endfor %}

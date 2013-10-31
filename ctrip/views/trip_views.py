@@ -1,5 +1,5 @@
 """
-Views for campain reply
+Views for coffee trips
 """
 from __future__ import absolute_import
 from django.template import RequestContext

@@ -40,7 +40,7 @@
     $('#add-row').click(function(e) {
         e.preventDefault();
         $(e.target).blur();
-        cloneRow('FORMSET.inline-departure:last',
+        cloneRow('.inline-departure:last',
                  'departure_set', calb);
     });
     $('INPUT[type=checkbox]').change(function(e) {
